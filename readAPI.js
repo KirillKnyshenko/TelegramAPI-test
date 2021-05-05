@@ -19,7 +19,7 @@ $(function () {
 	$.getJSON('https://api.telegram.org/bot1724756333:AAFcUfS6qKZp8Xdz8_7wweSDa2EbrrughVg/getUpdates', function (data) {
 		obj = data;
 		console.log(data);
-		for (var i = obj.result.length-1; i > 0; i--) {
+		for (var i = obj.result.length-1; i >= 0; i--) {
 			if (JSON.stringify(obj.result[i]).includes("channel_post")){
 
 				if (!JSON.stringify(obj.result[i]).includes("media_group_id")) {
