@@ -40,10 +40,11 @@ $(function () {
 					else
 						clone.children[0].innerHTML = obj.result[i].channel_post.chat.title + "<br><br>" + obj.result[i].channel_post.text.replace(/(?:\r\n|\r|\n)/g, '<br>');
 				} else {
-					var find_group = $('.post[group="' + obj.result[i].media_group_id + '"]');
+					var find_group = $('.post[group="' + obj.result[i].channel_post.media_group_id + '"]');
 					if (find_group.length == 0) {
 						var clone = createPost(obj, i);
-						clone.setAttribute("group", obj.result[i].media_group_id);
+						clone.setAttribute("group", obj.result[i].channel_post.media_group_id);
+						clone.children[0].innerHTML = obj.result[i].channel_post.chat.title + "<br><br>";
 						if (JSON.stringify(obj.result[i]).includes("photo")) {
 							var n = obj.result[i].channel_post.message_id;
 							$.getJSON('https://api.telegram.org/bot1724756333:AAFcUfS6qKZp8Xdz8_7wweSDa2EbrrughVg/getFile?file_id=' + obj.result[i].channel_post.photo[0].file_id, function (data2) {
